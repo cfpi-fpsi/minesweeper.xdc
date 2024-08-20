@@ -1,16 +1,27 @@
-td {
-  width: 1em;
-  height: 1em;
-  text-weight: bold;
+body { background: whitesmoke; }
+
+table {
+  border: .2em inset gainsboro;
+  user-select: none;
 }
+
+td {
+  width: 24px;
+  height: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+tr { height: 1em; }
 
 td.unknown {
   background-color: darkgrey;
-  border: outset;
+  border: 2px outset;
 }
 
 td.known {
   background-color: lightgrey;
+  border: 2px solid lightgrey;
 }
 
 td.flagged::after {
@@ -57,6 +68,3 @@ td.n8 {
   color: teal;
 }
 
-table {
-  border: .2em solid black;
-}
