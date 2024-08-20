@@ -1,0 +1,62 @@
+td {
+  width: 1em;
+  height: 1em;
+  text-weight: bold;
+}
+
+td.unknown {
+  background-color: darkgrey;
+  border: outset;
+}
+
+td.known {
+  background-color: lightgrey;
+}
+
+td.flagged::after {
+  content: "🚩";
+}
+
+td.exploded::after {
+  content: "💥";
+}
+
+td.known.mine::after {
+  content: "💣";
+}
+
+td.n1 {
+  color: blue;
+}
+
+td.n2 {
+  color: green;
+}
+
+td.n3 {
+  color: red;
+}
+
+td.n4 {
+  color: purple;
+}
+
+td.n5 {
+  color: orange;
+}
+
+td.n6 {
+  color: cyan;
+}
+
+td.n7 {
+  color: pink;
+}
+
+td.n8 {
+  color: teal;
+}
+
+table {
+  border: .2em solid black;
+}
