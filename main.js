@@ -88,7 +88,7 @@ function get_neighbours(cell) {
 function count_neighbouring_mines(cell) {
   count = 0;
   get_neighbours(cell).forEach(function (c) {
-    if (c.classList.contains("mine")) {
+    if (c.classList.contains("mine") || c.classList.contains("exploded")) {
       count += 1;
     }
   })
@@ -120,6 +120,9 @@ function lose_game() {
     cell.classList.remove("unknown");
     cell.classList.add("known");
     reveal_mines(cell);
+    if (cell.classList.contains("exploded")) {
+      cell.innerText = "";
+    }
   });
   $("#newgame").style.display = "block";
 }
