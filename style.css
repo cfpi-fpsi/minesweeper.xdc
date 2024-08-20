@@ -7,6 +7,7 @@ body { background: whitesmoke; }
 
 #minefield {
     display: grid;
+    user-select: none;
     grid-template-columns: var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size);
 }
 
