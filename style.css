@@ -23,6 +23,7 @@ button { width: 10em; height: 3em; }
     user-select: none;
     grid-template-columns: var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size);
     image-rendering: crisp-edges;
+    image-rendering: pixelated;
     background-image: url("./bg.png");
     background-size: 10%;
     padding: 1em;
