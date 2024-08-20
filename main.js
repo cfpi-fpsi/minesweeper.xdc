@@ -26,9 +26,7 @@ for (var i = 0; i < field_height; i++) {
         } else {
           reveal_mines(this);
         }
-        if (has_won()) {
-          $("#result").innerText = "You won!!"
-        }
+        check_victory();
       } else if (this.classList.contains("flagged")) {
         this.classList.remove("flagged");
       }
@@ -36,9 +34,8 @@ for (var i = 0; i < field_height; i++) {
     cell.oncontextmenu = function() {
       if (this.classList.contains("unknown")) {
         this.classList.add("flagged");
-      } else if (has_won()) {
-        $("#result").innerText = "You won!!"
       }
+      check_victory();
       return false;
     }
     row.appendChild(cell);
@@ -59,7 +56,7 @@ function place_mines(avoid_x, avoid_y) {
   mines_placed = true;
 }
 
-function has_won() {
+function check_victory() {
   for (var i = 0; i < field_width; ++i) {
     for (var j = 0; j < field_height; ++j) {
       var cell = $("#c"+i+"-"+j);
@@ -68,9 +65,11 @@ function has_won() {
       }
     }
   }
-  let promise = window.webxdc.sendToChat({
-    text : window.webxdc.selfName+" won Minesweeper XDC!"
-  });
+  let promise = window.webxdc.sendUpdate({
+    payload : {},
+    info : window.webxdc.selfName + " cleaned up all the mines!"
+  }, window.webxdc.selfName + " won a game of Minesweeper");
+  $("#newgame").style.display = "block";
   return true;
 }
 
@@ -118,8 +117,5 @@ function lose_game() {
     cell.classList.remove("unknown");
     cell.classList.add("known");
   });
-  $("#result").innerText = "You lost!";
-  window.webxdc.sendToChat({
-    text : window.webxdc.selfName + " lost Minesweeper"
-  });
+  $("#newgame").style.display = "block";
 }
