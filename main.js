@@ -104,6 +104,9 @@ function reveal_mines(cell) {
       if (c.classList.contains("unknown")) {
         reveal_mines(c);
       }
+      if (c.classList.contains("flagged")) {
+        c.classList.remove("flagged");
+      }
     });
   }
   if (n_mines > 0) {
