@@ -4,6 +4,7 @@ var field_height = 8;
 var field_width = 8;
 var initial_mines_count = 10;
 var mines_placed = false;
+let cut_sound = new Audio("./cut.wav");
 
 for (var i = 0; i < field_height; i++) {
   // var row = document.createElement("div");
@@ -114,6 +115,7 @@ function reveal_mines(cell) {
     cell.innerText = ""+n_mines;
     cell.classList.add("n"+n_mines);
   }
+  cut_sound.play();
 }
 
 function lose_game() {
