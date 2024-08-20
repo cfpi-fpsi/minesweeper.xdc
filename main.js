@@ -109,7 +109,7 @@ function reveal_mines(cell) {
       }
     });
   }
-  if (n_mines > 0) {
+  if (n_mines > 0 && ! cell.classList.contains("mine")) {
     cell.innerHTML = ""+n_mines;
     cell.classList.add("n"+n_mines);
   }
@@ -119,6 +119,7 @@ function lose_game() {
   $$("#minefield td").forEach(function (cell) {
     cell.classList.remove("unknown");
     cell.classList.add("known");
+    reveal_mines(cell);
   });
   $("#newgame").style.display = "block";
 }
