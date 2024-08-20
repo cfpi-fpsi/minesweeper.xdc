@@ -69,7 +69,7 @@ function has_won() {
     }
   }
   let promise = window.webxdc.sendToChat({
-    text : "Someone won Minesweeper XDC!"
+    text : window.webxdc.selfName+" won Minesweeper XDC!"
   });
   return true;
 }
@@ -119,4 +119,7 @@ function lose_game() {
     cell.classList.add("known");
   });
   $("#result").innerText = "You lost!";
+  window.webxdc.sendToChat({
+    text : window.webxdc.selfName + " lost Minesweeper"
+  });
 }
