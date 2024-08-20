@@ -34,6 +34,7 @@ button { width: 10em; height: 3em; }
     height: var(--cell-size);
     font-weight: bold;
     text-shadow: 0 -2px white;
+    -webkit-text-stroke: 1px white;
     text-align: center;
     font-size: 2em;
 }
