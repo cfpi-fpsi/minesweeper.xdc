@@ -22,7 +22,10 @@ button { width: 10em; height: 3em; }
     display: grid;
     user-select: none;
     grid-template-columns: var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size);
-    background-color: lightgreen;
+    image-rendering: crisp-edges;
+    background-image: url("./bg.png");
+    background-size: 10%;
+    padding: 1em;
 }
 
 /* Cells. */
@@ -41,9 +44,9 @@ button { width: 10em; height: 3em; }
     background-size: cover;
 }
 
-.flagged::after { content: "🚩"; }
-.exploded::after { content: "💥"; }
-.known.mine::after { content: "💣"; }
+.flagged { background-image: url("./flagged.png"); }
+.exploded { background-image: url("./explosion.png"); }
+.known.mine { background-image: url("./bomb.png"); }
 .n1 { color: blue; }
 .n2 { color: green; }
 .n3 { color: red; }
