@@ -1,32 +1,44 @@
 :root {
-    --cell-size: 32px;
+    --cell-size: 48px;
     --border-size: 3px;
 }
 
-body { background: whitesmoke; }
+body {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    margin: 0;
+    width: 100vw;
+}
+
+header, main, footer {
+    padding: 1em;
+}
+
+h1 { margin: 0; }
+button { width: 10em; height: 3em; }
 
 #minefield {
     display: grid;
     user-select: none;
     grid-template-columns: var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size);
+    background-color: lightgreen;
 }
 
 /* Cells. */
 #minefield > div {
-    height: calc(var(--cell-size) - var(--border-size) * 2);
+    height: var(--cell-size);
     font-weight: bold;
-    text-align: center;
 }
 
 .unknown {
-  background-color: lightgrey;
-  border: var(--border-size) outset white;
+    background-image: url("./grass.png");
+    background-size: cover;
 }
 
 .known {
-  background-color: gainsboro;
-  border: 1px solid gray;
-  padding: calc(var(--border-size) - 1px);
+    background-image: url("./grass_cut.png");
+    background-size: cover;
 }
 
 .flagged::after { content: "🚩"; }
