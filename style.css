@@ -9,6 +9,10 @@ body {
     align-items: center;
     margin: 0;
     width: 100vw;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+    background-image: url("./bg.png");
+    background-size: 10%;
 }
 
 header, main, footer {
@@ -22,10 +26,6 @@ button { width: 10em; height: 3em; }
     display: grid;
     user-select: none;
     grid-template-columns: var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size);
-    image-rendering: crisp-edges;
-    image-rendering: pixelated;
-    background-image: url("./bg.png");
-    background-size: 10%;
     padding: 1em;
 }
 
