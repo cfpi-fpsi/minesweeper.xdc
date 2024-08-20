@@ -5,6 +5,7 @@ var field_width = 8;
 var initial_mines_count = 10;
 var mines_placed = false;
 let cut_sound = new Audio("./cut.wav");
+let dig_sound = new Audio("./digflag.wav");
 
 for (var i = 0; i < field_height; i++) {
   // var row = document.createElement("div");
@@ -35,14 +36,13 @@ for (var i = 0; i < field_height; i++) {
     cell.oncontextmenu = function() {
       if (this.classList.contains("unknown")) {
         this.classList.add("flagged");
+        dig_sound.play();
       }
       check_victory();
       return false;
     }
     $("#minefield").appendChild(cell);
-    // row.appendChild(cell); 
   }
-  // $("#minefield").appendChild(row);
 }
 
 function place_mines(avoid_x, avoid_y) {
