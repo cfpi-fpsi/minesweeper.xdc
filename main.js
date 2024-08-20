@@ -6,9 +6,9 @@ var initial_mines_count = 10;
 var mines_placed = false;
 
 for (var i = 0; i < field_height; i++) {
-  var row = document.createElement("tr");
+  // var row = document.createElement("div");
   for (var j = 0; j < field_width; j++) {
-    var cell = document.createElement("td");
+    var cell = document.createElement("div");
     cell.id = "c"+i+"-"+j;
     cell.x = i;
     cell.y = j;
@@ -38,9 +38,10 @@ for (var i = 0; i < field_height; i++) {
       check_victory();
       return false;
     }
-    row.appendChild(cell);
+    $("#minefield").appendChild(cell);
+    // row.appendChild(cell); 
   }
-  $("#minefield").appendChild(row);
+  // $("#minefield").appendChild(row);
 }
 
 function place_mines(avoid_x, avoid_y) {
@@ -110,13 +111,13 @@ function reveal_mines(cell) {
     });
   }
   if (n_mines > 0 && ! cell.classList.contains("mine")) {
-    cell.innerHTML = ""+n_mines;
+    cell.innerText = ""+n_mines;
     cell.classList.add("n"+n_mines);
   }
 }
 
 function lose_game() {
-  $$("#minefield td").forEach(function (cell) {
+  $$("#minefield div").forEach(function (cell) {
     cell.classList.remove("unknown");
     cell.classList.add("known");
     reveal_mines(cell);

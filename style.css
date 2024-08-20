@@ -1,70 +1,42 @@
+:root {
+    --cell-size: 32px;
+    --border-size: 3px;
+}
+
 body { background: whitesmoke; }
 
-table {
-  border: .2em inset gainsboro;
-  user-select: none;
+#minefield {
+    display: grid;
+    grid-template-columns: var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size) var(--cell-size);
 }
 
-td {
-  width: 24px;
-  height: 24px;
-  font-weight: bold;
-  text-align: center;
+/* Cells. */
+#minefield > div {
+    height: calc(var(--cell-size) - var(--border-size) * 2);
+    font-weight: bold;
+    text-align: center;
 }
 
-tr { height: 1em; }
-
-td.unknown {
-  background-color: darkgrey;
-  border: 2px outset;
-}
-
-td.known {
+.unknown {
   background-color: lightgrey;
-  border: 2px solid lightgrey;
+  border: var(--border-size) outset white;
 }
 
-td.flagged::after {
-  content: "🚩";
+.known {
+  background-color: gainsboro;
+  border: 1px solid gray;
+  padding: calc(var(--border-size) - 1px);
 }
 
-td.exploded::after {
-  content: "💥";
-}
-
-td.known.mine::after {
-  content: "💣";
-}
-
-td.n1 {
-  color: blue;
-}
-
-td.n2 {
-  color: green;
-}
-
-td.n3 {
-  color: red;
-}
-
-td.n4 {
-  color: purple;
-}
-
-td.n5 {
-  color: orange;
-}
-
-td.n6 {
-  color: cyan;
-}
-
-td.n7 {
-  color: pink;
-}
-
-td.n8 {
-  color: teal;
-}
+.flagged::after { content: "🚩"; }
+.exploded::after { content: "💥"; }
+.known.mine::after { content: "💣"; }
+.n1 { color: blue; }
+.n2 { color: green; }
+.n3 { color: red; }
+.n4 { color: purple; }
+.n5 { color: orange; }
+.n6 { color: cyan; }
+.n7 { color: pink; }
+.n8 { color: teal; }
 
