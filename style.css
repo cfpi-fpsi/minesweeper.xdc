@@ -1,5 +1,5 @@
 :root {
-    --cell-size: 48px;
+    --cell-size: 5vh;
     --border-size: 3px;
 }
 
