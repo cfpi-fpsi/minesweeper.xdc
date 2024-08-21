@@ -4,17 +4,26 @@ var field_height = 8;
 var field_width = 8;
 var initial_mines_count = 10;
 var mines_placed = false;
-let cut_sound = new Audio("./cut.wav");
-let dig_sound = new Audio("./digflag.wav");
+let cut_sound = new Audio("./res/scissor_cut.wav");
+let dig_sound = new Audio("./res/dig.wav");
 
 for (var i = 0; i < field_height; i++) {
-  // var row = document.createElement("div");
   for (var j = 0; j < field_width; j++) {
     var cell = document.createElement("div");
     cell.id = "c"+i+"-"+j;
     cell.x = i;
     cell.y = j;
     cell.classList.add("unknown");
+      
+    let r = Math.random ();
+    if (r < 0.33) {
+	cell.classList.add ("unknown-type-1");
+    } else if (r < 0.66) {
+	cell.classList.add ("unknown-type-2");
+    } else {
+	cell.classList.add ("unknown-type-3");
+    }
+      
     cell.onclick = function() {
       if (! mines_placed) {
         place_mines(this.x, this.y);

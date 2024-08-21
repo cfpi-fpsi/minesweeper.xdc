@@ -11,8 +11,9 @@ body {
     width: 100vw;
     image-rendering: crisp-edges;
     image-rendering: pixelated;
-    background-image: url("./bg.png");
+    /* background-image: url("./bg.png"); */
     background-size: 10%;
+    background: gray;
 }
 
 header, main, footer {
@@ -39,19 +40,16 @@ button { width: 10em; height: 3em; }
     font-size: 2em;
 }
 
-.unknown {
-    background-image: url("./grass.png");
-    background-size: cover;
-}
+.unknown, .known { background-size: cover; }
 
-.known {
-    background-image: url("./grass_cut.png");
-    background-size: cover;
-}
+.unknown-type-1 { background-image: url("./res/gravedigger/unknown-1.png"); }
+.unknown-type-2 { background-image: url("./res/gravedigger/unknown-1.png"); }
+.unknown-type-3 { background-image: url("./res/gravedigger/unknown-1.png"); }
+.known { background-image: url("./res/gravedigger/known.png"); }
+.flagged { background-image: url("./res/gravedigger/flagged.png"); }
+.exploded { background-image: url("./res/gravedigger/explosion.png"); }
+.known.mine { background-image: url("./res/gravedigger/bomb.png"); }
 
-.flagged { background-image: url("./flagged.png"); }
-.exploded { background-image: url("./explosion.png"); }
-.known.mine { background-image: url("./bomb.png"); }
 .n1 { color: blue; }
 .n2 { color: green; }
 .n3 { color: red; }
