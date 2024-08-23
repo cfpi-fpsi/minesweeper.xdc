@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 name="Application"
-EXCLUDE_FILES="webxdc.js *.sh *.xdc *~"
+EXCLUDE_FILES="webxdc.js LICENSE README README.md *.sh *.xdc *~"
 
 function usage () {
     echo "Usage: ${0} [-hgp]"
