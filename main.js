@@ -6,6 +6,7 @@ var initial_mines_count = 10;
 var mines_placed = false;
 let cut_sound = new Audio("./res/scissor_cut.wav");
 let dig_sound = new Audio("./res/dig.wav");
+var t0; // When did the player click for the first time?
 
 for (var i = 0; i < field_height; i++) {
   for (var j = 0; j < field_width; j++) {
@@ -27,6 +28,7 @@ for (var i = 0; i < field_height; i++) {
     cell.onclick = function() {
       if (! mines_placed) {
         place_mines(this.x, this.y);
+        t0 = new Date();
       }
       if (this.classList.contains("unknown") && ! this.classList.contains("flagged")) {
         if (this.classList.contains("mine")) {
@@ -76,11 +78,15 @@ function check_victory() {
       }
     }
   }
+  // If we get here, we've won
+  var time = new Date(new Date() - t0);
+  var t = (time.getMinutes() + ":").padStart(2, '0') + ("" + (time.getSeconds())).padStart(2, '0');
   let promise = window.webxdc.sendUpdate({
     payload : {},
-    info : window.webxdc.selfName + " cleaned up all the mines!"
+    info : window.webxdc.selfName + " cleaned up all the mines in "+ t +"!"
   }, window.webxdc.selfName + " won a game of Minesweeper");
   $("#newgame").style.display = "block";
+  $("#result").innerText = "Finished in " + t;
   return true;
 }
 
