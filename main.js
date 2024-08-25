@@ -7,23 +7,8 @@ var mines_placed = false;
 let cut_sound = new Audio("./res/scissor_cut.wav");
 let dig_sound = new Audio("./res/dig.wav");
 var t0; // When did the player click for the first time?
-let game_finished = false; // Not won, just finished.
 
-window.onunload = function() {
-    if (!game_finished) {
-        localStorage.setItem("minefield", $("#minefield").innerHTML);
-        localStorage.setItem("timer", t0);
-    } else {
-        localStorage.removeItem("minefield");
-        localStorage.removeItem("timer");
-    }
-}
-
-if (localStorage.minefield == null) {
-    minefield_initialize();
-} else {
-    minefield_load();
-}
+minefield_initialize();
 
 function cell_onclick() {
     if (!mines_placed) {
@@ -52,18 +37,6 @@ function cell_oncontextmenu() {
     }
     check_victory();
     return false;
-}
-
-function minefield_load() {
-    $("#minefield").innerHTML = localStorage.minefield;
-    t0 = Date.parse(localStorage.timer);
-    for (let i = 0; i < field_height; i++) {
-        for (let j = 0; j < field_width; j++) {
-            let cell = $("#c" + i + "-" + j);
-            cell.onclick = cell_onclick.bind(cell);
-            cell.oncontextmenu = cell_oncontextmenu.bind(cell);
-        }
-    }
 }
 
 function minefield_initialize() {
@@ -114,7 +87,6 @@ function check_victory() {
         }
     }
     // If we get here, we've won
-    game_finished = true;
     var time = new Date(new Date() - t0);
     var t = (time.getMinutes() + ":").padStart(2, '0') + ("" + (time.getSeconds())).padStart(2, '0');
     let promise = window.webxdc.sendUpdate({
@@ -179,5 +151,4 @@ function lose_game() {
         }
     });
     $("#newgame").style.display = "block";
-    game_finished = true;
 }
